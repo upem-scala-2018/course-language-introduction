@@ -13,7 +13,7 @@ Introduction au langage
 
 ---
 
-N'hésitez pas à expérimenter : [https://scastie.scala-lang.org/](https://scastie.scala-lang.org/)
+N'hésitez pas à expérimenter [https://scastie.scala-lang.org/](https://scastie.scala-lang.org/)
 
 ---
 
