@@ -1,6 +1,6 @@
-# Flux 
+# Scala 
 
-An application architecture for React
+Introduction au langage
 
 ---
 
