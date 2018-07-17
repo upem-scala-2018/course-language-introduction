@@ -24,6 +24,10 @@ val s = "Mon premier programme"
 println(s);
 ```
 
+- Immutabilité
+- Inférence de type
+- Toutes les fonctions retournent une valeur typée
+
 ---
 
 ![Flux Explained](https://facebook.github.io/flux/img/flux-simple-f8-diagram-explained-1300w.png)
