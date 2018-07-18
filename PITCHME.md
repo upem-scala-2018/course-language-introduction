@@ -131,3 +131,31 @@ val f: Int => Int = n => n match {
 f(10)
 f(-7)
 ```
+
+---
+
+#### Custom Types
+
+```scala
+class Vehicule
+
+val v = new Vehicule
+```
+
+---
+
+```scala
+class Vehicule(val name: String)
+
+val v = new Vehicule("Ma voiture")
+println(v.name)
+```
+
+---
+
+```scala
+class Vehicule(private val name: String)
+
+val v = new Vehicule("Ma voiture")
+println(v.name) // fail
+```
