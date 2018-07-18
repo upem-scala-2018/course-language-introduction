@@ -22,16 +22,24 @@ Introduction au langage
 
 ---
 
-### Premier programme Scala
+### Premiers programmes Scala
+
+---
+
+#### Définition de variable
 
 ```scala
 val s1 = "Ma variable immutable"
 var s2 = "Ma variable mutable"
-println(s1)
-println(s2)
+val s3: String = "Ma variable avec type explicite"
+val i = 42
+val b = true
 ```
+
+---
 
 - Pas de ';' en fin d'expression
 - Immutabilité
 - Inférence de type
-- Toutes les fonctions retournent une valeur typée
+
+---
