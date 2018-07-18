@@ -220,3 +220,12 @@ def onlyGreen(v: Vehicule with Green) = v
 onlyGreen(green) // compiles
 onlyGreen(red) // fails
 ```
+
+---
+
+- Les classes sont semblables à celles de Java
+- Le constructeur principal se trouve dans la déclaration
+- Les traits sont l'équivalent des interfaces en Java > 8
+- Les traits permettent l'héritage multiple (et la résolution du problème du diamand)
+- Les traits peuvent être utilisés pour ajouter du comportement à une classe
+- Les traits peuvent être utilisés pour préciser (refined) un typage
