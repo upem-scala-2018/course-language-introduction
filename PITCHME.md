@@ -134,7 +134,11 @@ f(-7)
 
 ---
 
-#### Custom Types
+### Custom Types et structures
+
+---
+
+#### Class et Trait
 
 ```scala
 class Vehicule
@@ -223,9 +227,34 @@ onlyGreen(red) // fails
 
 ---
 
-- Les classes sont semblables à celles de Java
+- Les (abstract) classes sont semblables à celles de Java, et assurent l'intéropérabilité
 - Le constructeur principal se trouve dans la déclaration
 - Les traits sont l'équivalent des interfaces en Java > 8
 - Les traits permettent l'héritage multiple (et la résolution du problème du diamand)
 - Les traits peuvent être utilisés pour ajouter du comportement à une classe
 - Les traits peuvent être utilisés pour préciser (refined) un typage
+
+---
+
+#### Case class et Object
+
+```scala
+case class Person(name: String, age: Int)
+
+val p1 = Person("Mathieu", 30)
+val p2 = Person("Matthieu", 30)
+println(p1.name)
+println(p1.age)
+println(p1.toString)
+println(p1.hashCode)
+println(p1 == p2) // En Scala '==' invoque la méthode 'equals' ;)
+```
+
+---
+
+- Les case class représentent des Value Object
+- Les case class génèrent les méthodes toString, equals et hashCode
+- Les champs des case class sont publics et immuables par défaut
+- Pas besoin de 'new' pour instancier une case class
+
+---
