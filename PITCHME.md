@@ -34,6 +34,10 @@ var s2 = "Ma variable mutable"
 val s3: String = "Ma variable avec type explicite"
 val i = 42
 val b = true
+val v = {
+  val x = 1 + 5
+  x
+}
 ```
 
 ---
@@ -41,6 +45,7 @@ val b = true
 - Pas de ';' en fin d'expression
 - Immutabilité
 - Inférence de type
+- Les variables peuvent être définies sur plusieurs lignes
 
 ---
 
@@ -63,5 +68,11 @@ toUpper(1) // Compile error
 ---
 
 - "return" implicite: la dernière expression produit la valeur de retour
-- Les fonctions sont des variables typées comme les autres
+- Les fonctions sont des variables typées comme les autres: T^(_d) => T^(_cd)
 - Les fonctions peuvent être définies sur plusieurs lignes
+
+---
+
+#### Les types
+
+![Types](https://docs.scala-lang.org/resources/images/tour/unified-types-diagram.svg)
