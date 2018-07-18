@@ -68,7 +68,7 @@ toUpper(1) // Compile error
 ---
 
 - "return" implicite: la dernière expression produit la valeur de retour
-- Les fonctions sont des variables typées comme les autres: T^(_d) => T^(_cd)
+- Les fonctions sont des variables typées comme les autres: T ,,d,, => T ,,cd,,
 - Les fonctions peuvent être définies sur plusieurs lignes
 
 ---
