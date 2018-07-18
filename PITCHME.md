@@ -43,3 +43,25 @@ val b = true
 - Inférence de type
 
 ---
+
+#### Définition de fonction
+
+```scala
+val plus1 = (x: Int) => x + 1
+val plus2: Int => Int = x => x + 2
+val toUpper: String => String = (x: String) => x.toUpperCase
+val plus10 = (x: Int) => {
+  val plus5 = x + 5
+  plus5 + 5
+}
+
+plus1(2) // returns 3
+toUpper("scala") // returns "SCALA"
+toUpper(1) // Compile error
+```
+
+---
+
+- "return" implicite: la dernière expression produit la valeur de retour
+- Les fonctions sont des variables typées comme les autres
+- Les fonctions peuvent être définies sur plusieurs lignes
