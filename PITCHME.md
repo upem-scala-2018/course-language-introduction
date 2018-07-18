@@ -1,4 +1,7 @@
-# Scala 
+# Scala
+
+
+<img src="https://www.scala-lang.org/resources/img/frontpage/scala-spiral.png" alt="Scala Logo" width="100px" class="center"/>
 
 Introduction au langage
 
@@ -30,7 +33,3 @@ println(s)
 - Immutabilité
 - Inférence de type
 - Toutes les fonctions retournent une valeur typée
-
----
-
-![Flux Explained](https://facebook.github.io/flux/img/flux-simple-f8-diagram-explained-1300w.png)
