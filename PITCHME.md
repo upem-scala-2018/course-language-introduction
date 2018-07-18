@@ -175,3 +175,22 @@ println(v)
 println(v.getName)
 println(v.getNameWithprefix("Nom de ma voiture :"))
 ```
+
+---
+
+```scala
+trait Wheels {
+  val wheelsCount: Int
+}
+trait TwoWheels extends Wheels {
+  override val wheelsCount = 2
+}
+trait FourWheels {
+  override val wheelsCount = 4
+}
+class Vehicule(val name: String) extends FourWheels
+
+val v = new Vehicule("Ma voiture")
+println(v.name)
+println(v.wheelsCount)
+```
