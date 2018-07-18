@@ -23,9 +23,10 @@ Introduction au langage
 
 ```scala
 val s = "Mon premier programme"
-println(s);
+println(s)
 ```
 
+- Pas de ';' en fin d'expression
 - Immutabilité
 - Inférence de type
 - Toutes les fonctions retournent une valeur typée
