@@ -1,7 +1,7 @@
 # Scala
 
 
-<img src="https://cdn.worldvectorlogo.com/logos/scala-4.svg" alt="Scala Logo" width="100px" class="center"/>
+<img src="https://cdn.worldvectorlogo.com/logos/scala-4.svg" alt="Scala Logo" width="100px" style="border:none;background:none;" class="center"/>
 
 Introduction au langage
 
