@@ -79,6 +79,20 @@ toUpper(1) // Compile error
 
 ---
 
+#### Les types courants
+
+```scala
+val i: Int = 12
+val s: String = "string"
+val b: Boolean = true
+val tuple: (String, Int) = ("string", 3)
+val list: List[String] = List("un", "deux", "trois")
+val some: Option[Int] = Some(3)
+val none: Option[Int] = None
+```
+
+---
+
 #### Les structures de contrôle
 
 ```scala
@@ -90,7 +104,7 @@ for(i <- 1 to 10) { println(i) }
 condition match {
   case "true" => println("That's true")
   case "false" => println("That's false")
-  case x => println("I don't know")
+  case _ => println("I don't know")
 }
 ```
 
