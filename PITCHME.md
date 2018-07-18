@@ -165,6 +165,7 @@ println(v.name) // fail
 ```scala
 class Vehicule(val name: String) {
   def getName = name
+  def getNameWithprefix(prefix: String) = s"$prefix $name"
   override def toString = name
 }
 
@@ -172,4 +173,5 @@ val v = new Vehicule("Ma voiture")
 println(v.name)
 println(v)
 println(v.getName)
+println(v.getNameWithprefix("Nom de ma voiture :"))
 ```
