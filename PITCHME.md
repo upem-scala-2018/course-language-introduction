@@ -76,3 +76,39 @@ toUpper(1) // Compile error
 #### Les types
 
 ![Types](https://docs.scala-lang.org/resources/images/tour/unified-types-diagram.svg)
+
+---
+
+#### Les structures de contrôle
+
+```scala
+val s: String = if(1 < 10) "true" else "false"
+val x = if(1 < 10) "true" // else ()
+
+for(i <- 1 to 10) { println(i) }
+
+condition match {
+  case "true" => println("That's true")
+  case "false" => println("That's false")
+}
+```
+
+---
+
+- Toutes les structures de contrôle résultent en une valeur
+- **while** existe aussi, mais vous devrez utiliser la récursivité
+
+---
+
+#### Récursivité
+
+```scala
+val f: Int => Int = (n: Int) => n match {
+  case x if x <= 0 =>
+    println("Zero")
+  	0
+  case x =>
+    println(x)
+    f(x-1)
+}
+```
