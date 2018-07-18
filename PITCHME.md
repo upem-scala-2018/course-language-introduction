@@ -248,6 +248,13 @@ println(p1.age)
 println(p1.toString)
 println(p1.hashCode)
 println(p1 == p2) // En Scala "==" invoque la méthode "equals" ;)
+
+def isAdult(p: Person) = p match {
+  case Person(_, age) if age > 18 => true
+  case _ => false
+}
+
+isAdult(p1)
 ```
 
 ---
@@ -256,5 +263,35 @@ println(p1 == p2) // En Scala "==" invoque la méthode "equals" ;)
 - Les case class génèrent les méthodes toString, equals et hashCode
 - Les champs des case class sont publics et immuables par défaut
 - Pas besoin de **new** pour instancier une case class
+- On peut utiliser **match / case** sur les case class
 
 ---
+
+```scala
+object Constants {
+  val protocol = "http"
+  val host = "locahost"
+  val port = 9000
+  
+  val address = s"$protocol://$host:$port"
+}
+
+println(Constants.host)
+println(Constants.port)
+println(Constants.address)
+
+```
+
+- Un object est une instance singleton, son type est *nom*.type
+- Les object peuvent être utilisés pour y stocker des constantes
+
+---
+
+```scala
+trait Color
+object Green extends Color
+object Orange extends Color
+object Red extends Color
+```
+
+- Pour décrire 
