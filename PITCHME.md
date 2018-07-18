@@ -247,7 +247,7 @@ println(p1.name)
 println(p1.age)
 println(p1.toString)
 println(p1.hashCode)
-println(p1 == p2) // En Scala '==' invoque la méthode 'equals' ;)
+println(p1 == p2) // En Scala "==" invoque la méthode "equals" ;)
 ```
 
 ---
@@ -255,6 +255,6 @@ println(p1 == p2) // En Scala '==' invoque la méthode 'equals' ;)
 - Les case class représentent des Value Object
 - Les case class génèrent les méthodes toString, equals et hashCode
 - Les champs des case class sont publics et immuables par défaut
-- Pas besoin de 'new' pour instancier une case class
+- Pas besoin de **new** pour instancier une case class
 
 ---
