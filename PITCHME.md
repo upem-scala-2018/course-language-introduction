@@ -25,8 +25,10 @@ Introduction au langage
 ### Premier programme Scala
 
 ```scala
-val s = "Mon premier programme"
-println(s)
+val s1 = "Ma variable immutable"
+var s2 = "Ma variable mutable"
+println(s1)
+println(s2)
 ```
 
 - Pas de ';' en fin d'expression
