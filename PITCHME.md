@@ -103,7 +103,7 @@ condition match {
 #### Récursivité
 
 ```scala
-val f: Int => Int = (n: Int) => n match {
+val f: Int => Int = n => n match {
   case x if x <= 0 =>
     println("Zero")
   	0
@@ -111,4 +111,7 @@ val f: Int => Int = (n: Int) => n match {
     println(x)
     f(x-1)
 }
+
+f(10)
+f(-7)
 ```
