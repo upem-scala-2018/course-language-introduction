@@ -90,12 +90,14 @@ for(i <- 1 to 10) { println(i) }
 condition match {
   case "true" => println("That's true")
   case "false" => println("That's false")
+  case x => println("I don't know")
 }
 ```
 
 ---
 
 - Toutes les structures de contrôle résultent en une valeur
+- Les **match / case** doivent être exhaustifs !
 - **while** existe aussi, mais vous devrez utiliser la récursivité
 
 ---
