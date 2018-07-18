@@ -159,3 +159,17 @@ class Vehicule(private val name: String)
 val v = new Vehicule("Ma voiture")
 println(v.name) // fail
 ```
+
+---
+
+```scala
+class Vehicule(val name: String) {
+  def getName = name
+  override def toString = name
+}
+
+val v = new Vehicule("Ma voiture")
+println(v.name)
+println(v)
+println(v.getName)
+```
