@@ -1,7 +1,7 @@
 # Scala
 
 
-<img src="https://www.scala-lang.org/resources/img/frontpage/scala-spiral.png" alt="Scala Logo" width="100px" class="center"/>
+<img src="https://cdn.worldvectorlogo.com/logos/scala-4.svg" alt="Scala Logo" width="100px" class="center"/>
 
 Introduction au langage
 
