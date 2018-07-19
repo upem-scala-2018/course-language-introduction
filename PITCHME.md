@@ -319,4 +319,4 @@ println(p.upperName)
 - Un object du même nom qu'une classe (et défini dans le même fichier) est appelé Objet Compagnon
 - Une classe peut accéder aux méthodes privées de son compagnon
 - Les champs statiques (en Java) sont des constantes du companion object en Scala
-(- Les import sont possible dans les différents blocs (fonction, méthode, classe))
+- (Les import sont possible dans les différents blocs (fonction, méthode, classe))
