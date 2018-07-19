@@ -294,4 +294,4 @@ object Orange extends Color
 object Red extends Color
 ```
 
-- Pour décrire 
+- Les object peuvent être utilisés pour décrire un Enum
