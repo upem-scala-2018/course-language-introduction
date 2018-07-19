@@ -298,3 +298,25 @@ object Red extends Color
 ```
 
 - Les object peuvent être utilisés pour décrire un Sum Type (Enum)
+
+---
+
+#### Companion object
+
+```scala
+class Person(val name: String) {
+  import Person._
+  def upperName = toUpper(name)
+}
+object Person {
+  private def toUpper(s: String) = s.toUpperCase
+}
+
+val p = new Person("Mathieu")
+println(p.upperName)
+```
+
+- Un object du même nom qu'une classe (et défini dans le même fichier) est appelé Objet Compagnon
+- Une classe peut accéder aux méthodes privées de son compagnon
+- Les champs statiques (en Java) sont des constantes du companion object en Scala
+(- Les import sont possible dans les différents blocs (fonction, méthode, classe))
