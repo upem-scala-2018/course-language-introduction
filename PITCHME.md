@@ -337,3 +337,28 @@ p match {
   case _ => println("Je ne sais pas qui c'est")
 }
 ```
+
+- la méthode unapply s'appelle l'extractor => extrait les champs
+- la méthode apply s'appelle... la méthode apply
+
+---
+
+```scala
+object Split {
+  def unapply(s: String) = s match {
+    case x if x.length % 2 == 0 =>
+    	val l = x.length / 2
+    	Some(x.substring(0, l), x.substring(l, x.length))
+    case _ => None
+  }
+}
+
+"abcdef" match {
+  case Split(a, b) => println(s"$a $b")
+  case _ => println("Can not split")
+}
+```
+
+---
+
+- Les methodes apply et unapply sont générées automatiquement pour les case class
