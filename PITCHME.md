@@ -320,3 +320,20 @@ println(p.upperName)
 - Une classe peut accéder aux méthodes privées de son compagnon
 - Les champs statiques (en Java) sont des constantes du companion object en Scala
 - (Les import sont possible dans les différents blocs (fonction, méthode, classe))
+
+---
+
+```scala
+class Person(val name: String)
+
+object Person {
+  def apply(name: String): Person = new Person(name)
+  def unapply(p: Person): Option[String] = Some(p.name)
+}
+
+val p = Person("Mathieu")
+p match {
+  case Person("Mathieu") => println("C'est Mat !")
+  case _ => println("Je ne sais pas qui c'est")
+}
+```
