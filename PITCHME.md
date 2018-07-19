@@ -77,6 +77,9 @@ toUpper(1) // Compile error
 
 ![Types](https://docs.scala-lang.org/resources/images/tour/unified-types-diagram.svg)
 
+- Il n'y a pas de type primitif : tout est objet
+- Il n'y a pas d'opérateur (ex : "+", "-", "!" sont des méthodes)
+
 ---
 
 #### Les types courants
