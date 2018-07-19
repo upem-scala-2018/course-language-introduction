@@ -392,6 +392,26 @@ firstTwo(List(true, false, true))
 
 ---
 
-### Genericity
+### Généricité
+
+```scala
+def identity[A](a: A) = a
+```
+
+- A est un type générique
+- Lire "pour tout type A"
+
+---
+
+```scala
+case class Vehicule(brand: String)
+case class Person[A](name: String, stuff: A)
+case class Tuple[A, B](first: A, second: B)
+```
+
+- Vehicule est un **type***, son kind est "*"
+- Person est un **type constructor**, il lui faut un type pour devenir lui-même un type. On parle aussi de higher-kind type, car son kind est "* -> *"
+- Person\[A] est un type, son kind est "*"
+- Tuple\[A, B] est un type (\*), le kind de Tuple\[A, \_] est \* -> \*, le kind de Tuple est \* -> \* -> \*
 
 ---
