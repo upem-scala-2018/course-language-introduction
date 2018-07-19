@@ -365,7 +365,18 @@ object Split {
 
 ---
 
-### Exemples
+#### Exemples
+
+```scala
+val some = Option("Mathieu")
+
+some match {
+  case None => println("Nothing in it")
+  case Some(x) => println(s"The value is $x")
+}
+```
+
+---
 
 ```scala
 def firstTwo[A](l: List[A]) = l match {
@@ -381,11 +392,6 @@ firstTwo(List(true, false, true))
 
 ---
 
-```scala
-val some = Option("Mathieu")
+### Genericity
 
-some match {
-  case None => println("Nothing in it")
-  case Some(x) => println(s"The value is $x")
-}
-```
+---
