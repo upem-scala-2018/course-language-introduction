@@ -359,6 +359,33 @@ object Split {
 }
 ```
 
+- unapply est utilisée pour la destructuration dans les Pattern Matching
+- Déjà implémentée pour de nombreuses structures
+- Les methodes apply et unapply sont générées automatiquement pour les case class
+
 ---
 
-- Les methodes apply et unapply sont générées automatiquement pour les case class
+### Exemples
+
+```scala
+def firstTwo[A](l: List[A]) = l match {
+  case x :: y :: xs => println(s"$x $y")
+  case _ => println("Must contain at least 2 elements")
+}
+
+firstTwo(List(1, 3, 5))
+firstTwo(List(1))
+firstTwo(List("un", "cinq", "six"))
+firstTwo(List(true, false, true))
+```
+
+---
+
+```scala
+val some = Option("Mathieu")
+
+some match {
+  case None => println("Nothing in it")
+  case Some(x) => println(s"The value is $x")
+}
+```
