@@ -262,8 +262,8 @@ isAdult(p1)
 - Les case class représentent des Value Object
 - Les case class génèrent les méthodes toString, equals et hashCode
 - Les champs des case class sont publics et immuables par défaut
-- Pas besoin de **new** pour instancier une case class
-- On peut utiliser **match / case** sur les case class
+- Pas besoin de **new** pour instancier une case class (on verra pourquoi)
+- On peut utiliser **match / case** sur les case class (on verra pourquoi)
 
 ---
 
