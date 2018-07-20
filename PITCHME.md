@@ -16,6 +16,15 @@ Introduction au langage
 
 ---
 
+### En bref
+
+- Langage compilé, mais distribué avec un interpéteur (commande **scala**)
+- Typage fort et statique
+- Forte communauté, et écosystème riche
+- Largement utilisé en entreprise : web, big data, streaming
+
+---
+
 ### Expérimentez
 
 [https://scastie.scala-lang.org/](https://scastie.scala-lang.org/)
