@@ -20,7 +20,8 @@ Introduction au langage
 
 - Langage compilé, mais distribué avec un interpéteur CLI
 - Typage fort et statique
-- Forte communauté, et écosystème riche
+- Forte communauté (nombreux projets open-source, conférences, meetups, discussions)
+- Ecosystème riche (SBT, Play, Akka, Shapeless, Scalaz, Cats, Dotty, ...)
 - Largement utilisé en entreprise : web, big data, streaming
 
 ---
