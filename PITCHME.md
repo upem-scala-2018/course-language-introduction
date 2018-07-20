@@ -77,7 +77,7 @@ toUpper(1) // Compile error
 ---
 
 - **return** implicite: la dernière expression produit la valeur de retour
-- Les fonctions sont des variables typées **T\<sub>domain\</sub> => T\<sub>codomain\</sub>**
+- Les fonctions sont des variables typées T\<sub>domain\</sub> => T\<sub>codomain\</sub>
 - Les fonctions peuvent être définies sur plusieurs lignes
 
 ---
