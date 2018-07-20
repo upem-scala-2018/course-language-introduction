@@ -67,8 +67,8 @@ toUpper(1) // Compile error
 
 ---
 
-- "return" implicite: la dernière expression produit la valeur de retour
-- Les fonctions sont des variables typées comme les autres: T<sub>domain</sub> => T<sub>codomain</sub>
+- **return** implicite: la dernière expression produit la valeur de retour
+- Les fonctions sont des variables typées **T\<sub>domain\</sub> => T\<sub>codomain\</sub>**
 - Les fonctions peuvent être définies sur plusieurs lignes
 
 ---
@@ -77,8 +77,8 @@ toUpper(1) // Compile error
 
 ![Types](https://docs.scala-lang.org/resources/images/tour/unified-types-diagram.svg)
 
-- Il n'y a pas de type primitif : tout est objet
-- Il n'y a pas d'opérateur (ex : "+", "-", "!" sont des méthodes)
+- Il n'y a pas de type primitif, tout est objet (Int, Boolean, Float, ...)
+- Il n'y a pas d'opérateur (ex : **+**, **-**, **!** sont des méthodes)
 
 ---
 
@@ -316,7 +316,7 @@ val p = new Person("Mathieu")
 println(p.upperName)
 ```
 
-- Un object du même nom qu'une classe (et défini dans le même fichier) est appelé Objet Compagnon
+- Un object du même nom qu'une classe (et défini dans le même fichier) est appelé **Objet Compagnon**
 - Une classe peut accéder aux méthodes privées de son compagnon
 - Les champs statiques (en Java) sont des constantes du companion object en Scala
 - (Les import sont possible dans les différents blocs (fonction, méthode, classe))
@@ -338,8 +338,8 @@ p match {
 }
 ```
 
-- la méthode unapply s'appelle l'extractor => extrait les champs
-- la méthode apply s'appelle... la méthode apply
+- la méthode **unapply** s'appelle l'extractor => extrait les champs
+- la méthode **apply** s'appelle... la méthode apply
 
 ---
 
@@ -359,9 +359,9 @@ object Split {
 }
 ```
 
-- unapply est utilisée pour la destructuration dans les Pattern Matching
+- **unapply** est utilisée pour la destructuration dans les Pattern Matching
 - Déjà implémentée pour de nombreuses structures
-- Les methodes apply et unapply sont générées automatiquement pour les case class
+- Les methodes **apply** et **unapply** sont générées automatiquement pour les case class
 
 ---
 
@@ -398,8 +398,8 @@ firstTwo(List(true, false, true))
 def identity[A](a: A) = a
 ```
 
-- A est un type générique
-- Lire "pour tout type A"
+- *A* est un type générique
+- Lire "pour tout type *A*"
 
 ---
 
@@ -407,11 +407,38 @@ def identity[A](a: A) = a
 case class Vehicule(brand: String)
 case class Person[A](name: String, stuff: A)
 case class Tuple[A, B](first: A, second: B)
+
+type PersonWithBoolean = Person[Boolean]
 ```
 
 - Vehicule est un **type***, son kind est "*"
 - Person est un **type constructor**, il lui faut un type pour devenir lui-même un type. On parle aussi de higher-kind type, car son kind est "* -> *"
 - Person\[A] est un type, son kind est "*"
 - Tuple\[A, B] est un type (\*), le kind de Tuple\[A, \_] est \* -> \*, le kind de Tuple est \* -> \* -> \*
+- Scala permet de faire des **Type Alias**
+
+---
+
+```scala
+class Test
+class TestWith[A]
+
+def display[F[_], A](fa: F[A]) = println(fa)
+display(List(1, 2, 3)) // compiles
+display(new TestWith[String]) // compiles
+display(new Test) // fails
+```
+
+---
+
+### Les fonctions
+
+```scala
+val identity: A => A = (a: A) => a
+```
+
+- Le type de cette fonction est **Function1\[A, A]**, aussi écrit **=>\[A, A]**, ou encore **A => A**
+- Plus généralement, un type **T\[A, B]** peut s'écrire **A T B**
+- Les fonctions sont typées de manière générique, FunctionX, X étant le nombre de paramètres
 
 ---
