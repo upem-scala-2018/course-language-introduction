@@ -443,6 +443,33 @@ val identity: A => A = (a: A) => a
 
 ---
 
+#### Higher Order Functions
+
+```scala
+val applyF: (String => Int) => String => Int = f => s => f(s)
+val length = (s: String) => s.length
+
+applyF(length)("Salut")
+```
+
+- Une fonction est une valeur comme une autre
+- Elle peut donc être passée en paramètre, ou être retournée
+
+---
+
+#### Higher Order Functions : version générifiée
+
+```scala
+def applyF[A, B]: (A => B) => A => B = f => s => f(s)
+val length = (s: String) => s.length
+val plus10 = (i: Int) => i + 10
+
+applyF(length)("Salut")
+applyF(plus10)(10)
+```
+
+---
+
 #### Curryfication
 
 ```scala
