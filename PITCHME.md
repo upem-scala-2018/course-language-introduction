@@ -51,7 +51,7 @@ val v = {
 
 ---
 
-- Pas de ';' en fin d'expression
+- Pas de **;** en fin d'expression
 - Immutabilité
 - Inférence de type
 - Les variables peuvent être définies sur plusieurs lignes
