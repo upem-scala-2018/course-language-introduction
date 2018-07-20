@@ -459,6 +459,21 @@ val f = currify(concat)
 f("Mathieu")("Dulac")
 ```
 
-- La curryfication permet de transformer une fonction à plusieurs paramètre en fonction à 1 paramètre qui retourne une fonction, ...
+- La curryfication permet de transformer une fonction à plusieurs paramètres en fonction à 1 paramètre qui retourne une fonction, ...
 
 ---
+
+#### Curryfication : version générifiée
+
+```scala
+def currify[A, B, C]: ((A, B) => C) => A => B => C = (f: (A, B) => C) =>
+  (first: A) =>
+    (second: B) =>
+      f(first, second)
+
+val concat: (String, String) => String = (s1, s2) => s"$s1 $s2"
+val sum: (Int, Int) => Int = (i1, i2) => i1 + i2
+
+currify(concat)
+currify(sum)
+```
