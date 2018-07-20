@@ -442,3 +442,23 @@ val identity: A => A = (a: A) => a
 - Les fonctions sont typées de manière générique, FunctionX, X étant le nombre de paramètres
 
 ---
+
+#### Curryfication
+
+```scala
+val currify: ((String, String) => String) => String => String => String = (f: (String, String) => String) =>
+  (first: String) =>
+    (second: String) =>
+      f(first, second)
+
+
+val concat = (x: String, y: String) => s"$x $y"
+
+val f = currify(concat)
+
+f("Mathieu")("Dulac")
+```
+
+- La curryfication permet de transformer une fonction à plusieurs paramètre en fonction à 1 paramètre qui retourne une fonction, ...
+
+---
