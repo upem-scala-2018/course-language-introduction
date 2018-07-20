@@ -18,7 +18,7 @@ Introduction au langage
 
 ### En bref
 
-- Langage compilé, mais distribué avec un interpéteur (commande **scala**)
+- Langage compilé, mais distribué avec un interpéteur CLI
 - Typage fort et statique
 - Forte communauté, et écosystème riche
 - Largement utilisé en entreprise : web, big data, streaming
