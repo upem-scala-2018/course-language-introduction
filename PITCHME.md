@@ -196,6 +196,15 @@ println(v.getNameWithprefix("Nom de ma voiture :"))
 ---
 
 ```scala
+class Vehicule(val name: String = "Ma voiture")
+
+val v = new Vehicule
+println(v.name)
+```
+
+---
+
+```scala
 trait Wheels {
   val wheelsCount: Int
 }
