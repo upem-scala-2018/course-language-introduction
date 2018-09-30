@@ -26,7 +26,7 @@ class ExceptionsSpec extends FlatSpec with Matchers with GeneratorDrivenProperty
     }
   }
 
-  it should "returns an error if the index does not exist" in {
+  it should "return an error if the index does not exist" in {
     forAll { (xs: List[String], n: Int) =>
       val index = xs.length + n
       Exceptions.getAtIndex(index)(xs) should be(Failure(Exceptions.NoElementAtIndex(index)))
@@ -39,7 +39,7 @@ class ExceptionsSpec extends FlatSpec with Matchers with GeneratorDrivenProperty
     }
   }
 
-  "Errors divide" should "successfully divide two integers" in {
+  it should "return error if division by zero" in {
     forAll { n: Int =>
       Exceptions.divide(n, 0) should be(Left(Exceptions.DivideByZero))
     }
