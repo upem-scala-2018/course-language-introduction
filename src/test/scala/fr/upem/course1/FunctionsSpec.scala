@@ -11,7 +11,7 @@ class FunctionsSpec extends FlatSpec with Matchers with GeneratorDrivenPropertyC
     }
   }
 
-  "Function sumAll" should "sum two integers" in {
+  "Function sumAll" should "sum integers of given list" in {
     forAll { xs: List[Int] =>
       Functions.sumAll(xs) should be(xs.sum)
     }
