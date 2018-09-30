@@ -62,7 +62,7 @@ class ClassesSpec extends FlatSpec with Matchers with GeneratorDrivenPropertyChe
         Nil
     )
 
-    Classes.countGender(Gender.Male)(company) should be(2)
+    Classes.countGender(Gender.Female)(company) should be(2)
   }
 
   "Company onlyAdult" should "filter 18+" in {
@@ -102,14 +102,13 @@ class ClassesSpec extends FlatSpec with Matchers with GeneratorDrivenPropertyChe
 
     val p = Person("Julie", 16, Gender.Female, Some(Email("julie@gmail.com")))
 
-    Classes.employ(company)(p) should be(
-      Company("MyCompany",
-        Person("George", 17, Gender.Male, None) ::
-          Person("Sabrina", 34, Gender.Female, Some(Email("sabrina@gmail.com"))) ::
-          Person("Julie", 16, Gender.Female, Some(Email("julie@gmail.com"))) ::
-          Nil
-      )
-    )
+    val newCompany = Classes.employ(company)(p)
+    newCompany.name should be(company.name)
+    newCompany.employees should contain theSameElementsAs
+      (Person("George", 17, Gender.Male, None) ::
+        Person("Sabrina", 34, Gender.Female, Some(Email("sabrina@gmail.com"))) ::
+        Person("Julie", 16, Gender.Female, Some(Email("julie@gmail.com"))) ::
+        Nil)
   }
 
   "Company fireWithCondition" should "fire only non email employees" in {
