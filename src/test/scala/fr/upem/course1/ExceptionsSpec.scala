@@ -1,5 +1,7 @@
 package fr.upem.course1
 
+import fr.upem.course1.Exceptions.Member
+import fr.upem.course1.Exceptions.Member.Id
 import org.scalatest.prop.GeneratorDrivenPropertyChecks
 import org.scalatest.{FlatSpec, Matchers}
 
@@ -42,6 +44,18 @@ class ExceptionsSpec extends FlatSpec with Matchers with GeneratorDrivenProperty
   it should "return error if division by zero" in {
     forAll { n: Int =>
       Exceptions.divide(n, 0) should be(Left(Exceptions.DivideByZero))
+    }
+  }
+
+  "Errors getMemberById" should "successfully get member by id" in {
+    forAll { n: Int =>
+      Exceptions.getMemberById(Id("1")) should be(Some(Member(Member.Id("1"), "Charles")))
+    }
+  }
+
+  it should "return none if member does not exist" in {
+    forAll { n: Int =>
+      Exceptions.getMemberById(Id("101")) should be(None)
     }
   }
 

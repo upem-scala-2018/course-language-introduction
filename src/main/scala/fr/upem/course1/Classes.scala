@@ -1,6 +1,6 @@
 package fr.upem.course1
 
-import fr.upem.course1.Classes.Contact.Email
+import fr.upem.course1.Classes.Contact.{Address, Email}
 
 object Classes {
 
@@ -30,20 +30,43 @@ object Classes {
 
   final case class Company(name: String, employees: List[Person])
 
-  val isParisian: Person => Boolean = ???
+  val isParisian: Person => Boolean = person =>
+    person.contact.exists {
+      case Address(_, _, "Paris") => true
+      case _ => false
+    }
 
-  val isParisianCompany: Company => Boolean = ???
+  val isParisianCompany: Company => Boolean = company =>
+    company.employees.forall(isParisian)
 
-  val countGender: Gender => Company => Int = ???
+  val countGender: Gender => Company => Int = gender => company =>
+    company.employees.foldRight(0)((person, acc) =>
+      if (person.gender == gender)
+        acc + 1
+      else
+        acc
+    )
 
-  val onlyAdult: Company => Company = ???
+  val onlyAdult: Company => Company = company =>
+    company.copy(employees = company.employees.filter(employee => employee.age >= 18))
 
-  val extractEmail: Company => List[Email] = ???
+  val extractEmail: Company => List[Email] = company =>
+    company
+      .employees
+      .collect {
+        case Person(_, _, _, Some(email: Email)) => email
+      }
 
-  val employ: Company => Person => Company = ???
+  val employ: Company => Person => Company = company => person =>
+    company.copy(employees = person +: company.employees)
 
-  val fireWithCondition: Company => (Person => Boolean) => Company = ???
+  val fireWithCondition: Company => (Person => Boolean) => Company = company => condition =>
+    company.copy(employees = company.employees.filterNot(condition))
 
-  val fusion: String => Company => Company => Company = ???
+  val fusion: String => Company => Company => Company = newName => company1 => company2 =>
+    company1.copy(
+      name = newName,
+      employees = company1.employees ++ company2.employees
+    )
 
 }

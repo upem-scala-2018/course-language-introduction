@@ -1,6 +1,7 @@
 package fr.upem.course1
 
-import fr.upem.course1.Implicits.Id
+import fr.upem.course1.Implicits.{Id, _}
+import org.scalatest.enablers.Containing
 import org.scalatest.{FlatSpec, Matchers}
 
 class ImplicitSpec extends FlatSpec with Matchers {
@@ -34,6 +35,13 @@ class ImplicitSpec extends FlatSpec with Matchers {
   }
 
   it should "transform a string into an id and assert as a containing" in {
+    implicit val containing: Containing[Id] = new Containing[Id] {
+      override def contains(container: Id, element: Any): Boolean = container.value == element
+
+      override def containsOneOf(container: Id, elements: Seq[Any]): Boolean = elements.contains(container.value)
+
+      override def containsNoneOf(container: Id, elements: Seq[Any]): Boolean = !elements.contains(container.value)
+    }
     "123".id should contain("123")
   }
 
