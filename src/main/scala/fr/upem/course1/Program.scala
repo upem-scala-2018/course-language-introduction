@@ -15,7 +15,7 @@ object Program extends App {
   def independentCountries(countries: List[Country]): List[Country] = ???
 
   override def main(args: Array[String]) = {
-    // Implements a program using the methods above, to filter only the independent countries
+    // Implement a program using the methods above, to filter only the independent countries
     // Feel free to use a JSON parsing library (tips : "Play Json" is nice)
     // If you finish this one, I've got couples of ideas before leaving the room ;)
   }
