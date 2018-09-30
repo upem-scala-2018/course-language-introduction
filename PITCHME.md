@@ -54,7 +54,7 @@ val v = {
 
 - Pas de **;** en fin d'expression
 - Immutabilité
-- Inférence de type
+- Inférence de types
 - Les variables peuvent être définies sur plusieurs lignes
 
 ---
@@ -77,7 +77,7 @@ toUpper(1) // Compile error
 
 ---
 
-- **return** implicite: la dernière expression produit la valeur de retour
+- **return** implicite: la dernière expression du bloc produit la valeur de retour
 - Les fonctions sont des variables typées T<sub>domain</sub> => T<sub>codomain</sub>
 - Les fonctions peuvent être définies sur plusieurs lignes
 
@@ -114,9 +114,9 @@ val x = if(1 < 10) "true" // else ()
 
 for(i <- 1 to 10) { println(i) }
 
-condition match {
-  case "true" => println("That's true")
-  case "false" => println("That's false")
+aNumber match {
+  case 1 => println("That's one")
+  case 2 => println("That's two")
   case _ => println("I don't know")
 }
 ```
@@ -125,7 +125,7 @@ condition match {
 
 - Toutes les structures de contrôle résultent en une valeur
 - Les **match / case** doivent être exhaustifs !
-- **while** existe aussi, mais vous devrez utiliser la récursivité
+- **while** existe aussi, mais préférez plutôt la récursivité
 
 ---
 
@@ -242,7 +242,7 @@ onlyGreen(red) // fails
 
 - Les (abstract) classes sont semblables à celles de Java, et assurent l'intéropérabilité
 - Le constructeur principal se trouve dans la déclaration
-- Les traits sont l'équivalent des interfaces en Java > 8
+- Les traits sont l'équivalent des interfaces en Java >= 8
 - Les traits permettent l'héritage multiple (et la résolution du problème du diamand)
 - Les traits peuvent être utilisés pour ajouter du comportement à une classe
 - Les traits peuvent être utilisés pour préciser (refined) un typage
@@ -263,16 +263,16 @@ println(p1.hashCode)
 println(p1 == p2) // En Scala "==" invoque la méthode "equals" ;)
 
 def isAdult(p: Person) = p match {
-  case Person(_, age) if age > 18 => true
+  case Person(_, age) if age >= 18 => true
   case _ => false
 }
 
-isAdult(p1)
+isAdult(p1) // returns true
 ```
 
 ---
 
-- Les case class représentent des Value Object
+- Les case class représentent des Value Objects
 - Les case class génèrent les méthodes toString, equals et hashCode
 - Les champs des case class sont publics et immuables par défaut
 - Pas besoin de **new** pour instancier une case class (on verra pourquoi)
@@ -295,8 +295,8 @@ println(Constants.address)
 
 ```
 
-- Un object est une instance singleton, son type est *nom*.type
-- Les object peuvent être utilisés pour y stocker des constantes
+- Un object est un singleton (instance unique), son type est *nom*.type
+- Les object peuvent être utilisés pour stocker des constantes
 
 ---
 
@@ -329,7 +329,7 @@ println(p.upperName)
 - Un object du même nom qu'une classe (et défini dans le même fichier) est appelé **Objet Compagnon**
 - Une classe peut accéder aux méthodes privées de son compagnon
 - Les champs statiques (en Java) sont des constantes du companion object en Scala
-- (Les import sont possible dans les différents blocs (fonction, méthode, classe))
+- (Les import sont possible dans tous les scopes (fonction, méthode, classe...))
 
 ---
 
@@ -348,8 +348,8 @@ p match {
 }
 ```
 
-- la méthode **unapply** s'appelle l'extractor => extrait les champs
-- la méthode **apply** s'appelle... la méthode apply
+- la méthode **unapply** s'appelle l'extractor => extrait les champs (déconstruit)
+- la méthode **apply** s'appelle le constructeur => construit la classe
 
 ---
 
@@ -417,15 +417,17 @@ def identity[A](a: A) = a
 case class Vehicule(brand: String)
 case class Person[A](name: String, stuff: A)
 case class Tuple[A, B](first: A, second: B)
+case class Wrapper[F[_]](wrapper: F[String])
 
 type PersonWithBoolean = Person[Boolean]
 ```
 
-- Vehicule est un **type**, son kind est "*"
-- Person est un **type constructor**, il lui faut un type pour devenir lui-même un type. On parle aussi de higher-kind type, car son kind est "\* -> \*"
+- Vehicule est un **type**, son kind est "*" 
+- Person est un **type constructor**, il lui faut un type pour devenir lui-même un type.
 - Person\[A] est un type, son kind est "*"
 - Tuple\[A, B] est un type (\*), le kind de Tuple\[A, \_] est \* -> \*, le kind de Tuple est \* -> \* -> \*
 - Scala permet de faire des **Type Alias**
+- Wrapper est un type constructor qui prend un type constructor en argument, le kind de Wrapper\[F\[\_]] est (\* -> \*) -> \*. On parle aussi de higher-kinded type.
 
 ---
 
