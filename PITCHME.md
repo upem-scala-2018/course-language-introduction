@@ -418,16 +418,22 @@ case class Vehicule(brand: String)
 case class Person[A](name: String, stuff: A)
 case class Tuple[A, B](first: A, second: B)
 case class Wrapper[F[_]](wrapper: F[String])
-
-type PersonWithBoolean = Person[Boolean]
 ```
 
 - Vehicule est un **type**, son kind est "*" 
 - Person est un **type constructor**, il lui faut un type pour devenir lui-même un type.
 - Person\[A] est un type, son kind est "*"
 - Tuple\[A, B] est un type (\*), le kind de Tuple\[A, \_] est \* -> \*, le kind de Tuple est \* -> \* -> \*
-- Scala permet de faire des **Type Alias**
 - Wrapper est un type constructor qui prend un type constructor en argument, le kind de Wrapper\[F\[\_]] est (\* -> \*) -> \*. On parle aussi de higher-kinded type.
+
+---
+
+```scala
+case class Person[A](name: String, stuff: A)
+
+type PersonWithBoolean = Person[Boolean]
+```
+- Scala permet de faire des **Type Alias**
 
 ---
 
