@@ -43,6 +43,12 @@ val s1 = "Ma variable immutable"
 var s2 = "Ma variable mutable"
 val s3: String = "Ma variable avec type explicite"
 val i = 42
+val s4 = s"Valeur de i : $i"
+val s5 =
+  """
+    |String sur
+    |plusieurs lignes
+  """.stripMargin
 val b = true
 val v = {
   val x = 1 + 5
@@ -258,6 +264,64 @@ onlyGreen(red) // fails
 
 ---
 
+#### Pattern Matching
+
+- Permet de destructurer une variable, et d'asserter sur ses propriétés
+
+```scala
+"UPEMLV" match {
+  case x if x.length < 3 => "Too short"
+  case x if x.length > 10 => "Too long"
+  case _ => "Correct"
+}
+```
+
+---
+
+- Le Pattern Matching doit toujours être exhaustif
+- Le premier cas qui match est choisi !
+
+```scala
+Option(4) match {
+  case Some(7) => Some(77)
+  case Some(x) if x > 5 => Some(x + 10)
+  case Some(x) if x < 5 => Some(x + 20)
+  case Some(5) => Some(55)
+  case None => Some(0)
+}
+```
+
+---
+
+- Attention !
+
+```scala
+Option(4) match {
+  case Some(x) => "Matches all Some"
+  case Some(6) => "This case is ignored !!!!"
+  case None => "Nothing"
+}
+```
+
+---
+
+- Est une expression => retourne une valeur
+
+```scala
+val x = List(1, 2, 3) match {
+  case 1 :: 3 :: xs => "2 firsts are primes"
+  case 1 :: Nil => "1 element list"
+  case 1 :: 2 :: 3 :: 4 :: xs => "at least 4 elements list"
+  case _ => "Other structure"
+}
+```
+
+---
+
+- Le pattern matching est réalisable sur toutes les structures avec une méthode *unapply*
+
+---
+
 #### Case class et Object
 
 ```scala
@@ -411,6 +475,30 @@ firstTwo(List(true, false, true))
 
 ---
 
+### ByName / ByValue parameters
+
+```scala
+def doNothing(o: => Unit) = ()
+
+doNothing(println("Is it printed ?"))
+```
+
+---
+
+### Laziness
+
+```scala
+lazy val x = {
+  println("Evaluated")
+  4
+} 
+```
+
+- La variable 'x' sera évaluée lors de la première référence
+- Contrairement à un 'def', 'val' n'est évaluée qu'une seule fois !
+
+---
+
 ### Généricité
 
 ```scala
@@ -531,3 +619,102 @@ val sum: (Int, Int) => Int = (i1, i2) => i1 + i2
 currify(concat)
 currify(sum)
 ```
+
+---
+
+#### Implicits
+
+- Permet "d'injecter" un paramètre à la compilation dans une fonction ou dans une méthode
+
+```scala
+implicit val s: String = "Implicit string value"
+def print(implicit x: String) = println(x)
+
+print // prints "Implicit string value"
+```
+
+---
+
+- Souvent utilisé pour injecter un contexte : ExecutionContext, DB Driver, Session, ... 
+```scala
+override def map[S](f: Nothing => S)(implicit executor: ExecutionContext): Future[S] = this
+```
+---
+
+#### View bound
+
+- Permet de voir un type "en tant que"
+
+```scala
+implicit val convert: Int => String = (i: Int) => i.toString
+def printString[A](s: A)(implicit c: A => String) = println(c(s))
+
+printString(3) // compiles
+printString(true) // No implicit view available from Boolean => String
+```
+
+---
+
+#### Evidence
+
+- Permet de prouver une propriété à compile-time
+- Introduction aux typeclass du cours 3
+
+```scala
+trait Exists[A]
+implicit val IntExists = new Exists[Int]{}
+
+def exists[A](a: A)(implicit ev: Exists[A]): A = a
+
+exists(5) // compiles
+exists("string") // could not find implicit value for parameter ev: Playground.this.Exists[String]
+```
+
+---
+
+#### Implicit conversion
+
+- Pas vraiment de bonne raison de l'utiliser, à ma connaissance
+
+```scala
+import scala.language.implicitConversions
+implicit def convertToString(i: Int): String = i.toString
+
+def concat(x: String, y: String) = x ++ y
+
+concat(4, 2) // returns 42
+```
+
+---
+
+#### Extensions methods
+
+- Permet d'étendre des types existants
+
+```scala
+object Converters {
+  implicit class StringPlus(val s: String) extends AnyVal {
+  	def capitalizeEachWord = s.split(' ').map(_.capitalize).mkString(" ")
+	}
+}
+
+object Main extends App {
+  import Converters._
+ 	println("hello upemlv, it's good to see you".capitalizeEachWord)
+}
+```
+
+---
+
+#### L'expressivité par les types
+
+- Exprimer l'absence probable de valeur : Option\[A]
+- Exprimer la potentielle absence ou multitude de valeurs : List\[A]
+- Exprimer la potentielle multitude de valeurs : NonEmptyList\[A] (pas dans le SDK)
+- Exprimer un traitement pouvant échouer : Try\[A]
+- Exprimer un traitement asynchrone : Future\[A]
+- Exprimer un traitement lazy : Task\[A] (pas dans le SDK)
+- Exprimer un Union Type : Either\[A, B]
+...
+
+---
